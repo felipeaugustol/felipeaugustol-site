@@ -66,11 +66,8 @@ $gblob_dest = Get-AzStorageAccount -ResourceGroupName $rg_sa_dest_name -Name $sa
 $filter_gblob_dest = $gblob_dest | Sort-Object -Property LastModified -Descending
 
 # [COMPARE AND COPY PROCESS]
-# Remove folders from Filter
 Write-Output "`nComparing data on source and destination storage account..."
 $getdate = Get-Date -Format "dd-MM-yyyy"
-<# $filter_src_item = $gblob_src | Where-Object { $_.ContentType -ne "application/octet-stream" -or $_.Length -gt 0 -or $_.Name.EndsWith('.csv') -or $_.Name.EndsWith('.zip')} #>
-<# $filter_src_item = $gblob_src | Where-Object { $_.ContentType -ne $NULL -and $_.Length -ge 0 } #>
 $get_yesterday_date = (Get-Date).AddDays(-1)
 $filter_src_item = $gblob_src | Where-Object { $_.Length -gt 0 -and $_.Name.EndsWith -ne '.***' } | Where-Object {$_.LastModified -gt $get_yesterday_date }
 
