@@ -36,8 +36,6 @@ function Get-SAContext {
 
 # [SRC_CTX]
 
-#############################SELECT AZ SUBSCRIPTION MISSING
-
 
 $StorageAccount_Source_Context = Get-SAContext -ResourceGroupName $rg_sa_backup_src_name -StorageAccountName $sa_bkp_src_name
 
